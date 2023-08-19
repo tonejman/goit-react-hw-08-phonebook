@@ -2,9 +2,9 @@ import { useState } from 'react';
 import PropTypes from 'prop-types';
 import css from './ContactForm.module.css';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectContacts } from 'redux/selectors';
+import { selectContacts } from 'redux/contact/selectors';
 
-import { addContact } from 'redux/operations';
+import { addContact } from 'redux/contact/operations';
 
 const ContactForm = () => {
   const [name, setName] = useState('');

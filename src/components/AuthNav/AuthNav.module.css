@@ -1,0 +1,15 @@
+.link a {
+ padding: 8px 16px;
+  border-radius: 4px;
+  text-decoration: none;
+  color: black;
+  font-weight: 500;
+  
+}
+
+.link a[class='active'] {
+  color: white;
+  background-color:  #0097ff;
+}
+
+

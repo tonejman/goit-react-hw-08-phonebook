@@ -1,0 +1,61 @@
+.form {
+  width: 320px;
+  padding: 10px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.label {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 16px;
+
+  font-size: 16px;
+  font-weight: bold;
+  font-family: Segoe UI;
+  color: #5e5e5e;
+}
+
+.input {
+  padding: 16px;
+  margin-top: 8px;
+  font-size: 16px;
+  line-height: 1.2;
+  border: 1px solid grey;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: border 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  &:focus {
+    border: 3px solid #0097ff;
+    outline: none;
+  }
+}
+
+.button {
+  font-size: 17px;
+  font-weight: 700;
+  font-family: Segoe UI;
+  padding: 11px;
+  margin-bottom: 16px;
+  color: #0097ff;
+  background-color: white;
+  border: 1px solid;
+  border-radius: 6px;
+  cursor: pointer;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    border-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  &:hover,
+  &:focus {
+    color: white;
+    background-color: #0097ff;
+    border-color: none;
+  }
+}
+
+.headline {
+  font-weight: bold;
+  color: #0097ff;
+  text-align: center;
+}

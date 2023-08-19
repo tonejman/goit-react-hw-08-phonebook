@@ -1,31 +1,35 @@
-import ContactForm from './ContactForm';
-import Filter from './Filter';
-import ContactList from './ContactList';
-import { useDispatch, useSelector } from 'react-redux';
-import { useEffect } from 'react';
-import { fetchContacts } from 'redux/operations';
-import { selectError, selectIsLoading } from 'redux/selectors';
+import { Route, Routes } from 'react-router-dom';
+import { useAuth } from 'hooks/useAuth';
+import { lazy, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { refreshUser } from 'redux/auth/operations';
+import { PrivateRoute } from './PrivateRoute';
+import { RestrictedRoute } from './RestrictedRoute';
+import { CommonLayout } from './CommonLayout';
+
+const Home = lazy(() => import('pages/Home'));
+const Register = lazy(() => import('pages/Register'));
+const Login = lazy(() => import('pages/Login'));
+const Contacts = lazy(() => import('pages/Contacts'));
 
 export const App = () => {
   const dispatch = useDispatch();
-  const isLoading = useSelector(selectIsLoading);
-  const error = useSelector(selectError);
+  const { isRefreshing } = useAuth();
 
   useEffect(() => {
-    dispatch(fetchContacts());
+    dispatch(refreshUser());
   }, [dispatch]);
 
-  return (
-    <div className="wrapper">
-      <h1>Phonebook</h1>
-      <ContactForm />
-      {isLoading && !error && <p>Loading...</p>}
-      {error && <p>{error}</p>}
-      <h2>Contacts</h2>
-      <Filter />
-      <ContactList />
-    </div>
+  return isRefreshing ? (
+    <b>Refreshing user...</b>
+  ) : (
+    <Routes>
+      <Route path="/" element={<CommonLayout />}>
+        <Route index element={<Home />} />
+        <Route path="/register" element={<RestrictedRoute component={<Register />} redirectTo="/contacts" />} />
+        <Route path="/login" element={<RestrictedRoute component={<Login />} redirectTo="/contacts" />} />
+        <Route path="/contacts" element={<PrivateRoute component={<Contacts />} redirectTo="/login" />} />
+      </Route>
+    </Routes>
   );
 };
-
-export default App;

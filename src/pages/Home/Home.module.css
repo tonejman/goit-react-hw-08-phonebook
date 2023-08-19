@@ -1,0 +1,17 @@
+.container {
+  align-items: center;
+  justify-content: center;
+  padding-top: 160px;
+}
+
+.title {
+  font-weight: 700;
+  font-size: 46px;
+  text-align: center;
+  color: #0097ff;
+}
+
+.phone {
+  display: flex;
+  justify-content: center;
+}
