@@ -24,11 +24,23 @@ export const LoginForm = () => {
       <h1 className={css.headline}>Log in to Phonebook</h1>
       <label className={css.label}>
         Email
-        <input className={css.input} type="email" name="email" />
+        <input
+          className={css.input}
+          type="email"
+          name="email"
+          placeholder="Your email"
+          aria-label="Input for your email"
+        />
       </label>
       <label className={css.label}>
         Password
-        <input className={css.input} type="password" name="password" />
+        <input
+          className={css.input}
+          type="password"
+          name="password"
+          placeholder="Your password"
+          aria-label="Input for your password"
+        />
       </label>
       <button className={css.button} type="submit">
         Log In
